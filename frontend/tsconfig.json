@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    // Type Checking
+    "noImplicitReturns": true, // Проверить как будет работать в ф-иях типа action
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    // Modules
+    "baseUrl": "src",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "app": ["app"],
+      "components": ["components"],
+      "providers": ["providers"],
+      "pages": ["pages"],
+      "shared": ["shared"]
+    },
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    // JavaScript Support
+    "allowJs": true,
+    // Interop
+    "esModuleInterop": true,
+    "isolatedModules": true, // vite requires
+    // Language and Environment
+    // "emitDecoratorMetadata": true // TODO: а нужно ли вообще?
+    // "experimentalDecorators": true // TODO: а нужно ли вообще?
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM"],
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    // Completeness
+    "skipLibCheck": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"]
+  },
+  "include": ["src/**/*", "tests/**/*", "vite.config.ts"] // TODO: Может вообще не указывать?
+}
+
+// *TODO поправлю после начала разработки проекта

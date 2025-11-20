@@ -1,0 +1,63 @@
+{
+  "name": "bonuslevel",
+  "version": "0.0.5",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoneyTreesIsThePerfectPlaceForShade/BonusLevel.git"
+  },
+  "author": "Матвей Скоморохов",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MoneyTreesIsThePerfectPlaceForShade/BonusLevel/issues"
+  },
+  "homepage": "https://github.com/MoneyTreesIsThePerfectPlaceForShade/BonusLevel#readme",
+  "engines": {
+    "node": ">=22.11.0",
+    "npm": ">=10.9.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "types": "tsc --noEmit",
+    "lint": "npx eslint .",
+    "stylelint": "stylelint '**/*.css'",
+    "test": "jest --maxWorkers=4 --logHeapUsage",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage"
+  },
+  "dependencies": {
+    "classnames": "2.5.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@nsmp/eslint-plugin-rules": "2.1.0",
+    "@swc/jest": "0.2.39",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/jest-dom": "6.6.3",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.0.13",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@vitejs/plugin-react-swc": "3.10.2",
+    "cssnano": "7.0.7",
+    "eslint": "9.31.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "30.0.4",
+    "jest-environment-jsdom": "30.0.4",
+    "jest-svg-transformer": "1.0.0",
+    "postcss-import": "16.1.1",
+    "postcss-mixins": "12.0.0",
+    "postcss-modules": "6.0.1",
+    "postcss-preset-env": "10.2.4",
+    "stylelint": "16.21.1",
+    "stylelint-config-standard": "38.0.0",
+    "stylelint-order": "7.0.0",
+    "typescript": "5.8.3",
+    "vite": "6.3.5"
+  }
+}
