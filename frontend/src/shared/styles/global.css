@@ -1,12 +1,9 @@
 html {
+  /* 1rem === 10px */
   font-size: 62.5%;
 }
 
 body {
-  /* background-color: $color-kendricklamar; */
-
-  /* color: $color-mfdoom; */
-
   /* font-family: Roboto, sans-serif; */
   font-weight: 400;
   line-height: 1.7;

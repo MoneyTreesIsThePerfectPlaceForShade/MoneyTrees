@@ -1,0 +1,9 @@
+:root {
+  /* Цвет фона приложения */
+  --app-background-light: #F5F5F5;
+  --app-background-dark: #143250;
+
+  /* Цвет основого текста */
+  --app-color-light: #143250;
+  --app-color-dark: #F5F5F5;
+}

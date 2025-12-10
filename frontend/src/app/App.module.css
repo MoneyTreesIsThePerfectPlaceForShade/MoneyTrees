@@ -1,2 +1,12 @@
 @import url('../shared/styles/reset.css');
 @import url('../shared/styles/global.css');
+@import url('../shared/styles/variables.css');
+
+:root {
+  --background-color: whitesmoke;
+}
+
+body {
+  background-color: var(--background-color);
+  transition: all var(--standart-animation-duration);
+}
