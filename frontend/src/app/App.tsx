@@ -13,7 +13,7 @@ export const App = () => {
 	if (root?.style) {
 		theme === 'light'
 			? root.style.setProperty('--background-color', '#F5F5F5')
-			: root.style.setProperty('--background-color', '#143250');
+			: root.style.setProperty('--background-color', '#0a1928');
 		;
 	}
 

@@ -1,6 +1,6 @@
 {
   "name": "bonuslevel",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
   "dependencies": {
     "classnames": "2.5.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-router": "7.11.0"
   },
   "devDependencies": {
     "@nsmp/eslint-plugin-rules": "2.1.0",

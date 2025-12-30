@@ -5,8 +5,8 @@ import postcssPresetEnv from 'postcss-preset-env';
 
 export default {
 	plugins: [
-		postcssImport(),
 		postcssMixins(),
+		postcssImport(),
 		postcssPresetEnv({
 			features: {
 				'nesting-rules': true

@@ -3,6 +3,17 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(({command}) => {
 	const commonConfig = {
+		css: {
+			modules: {
+				generateScopedName: (name: string, filename: string, css: string) => {
+					const filePath = filename.split('/').pop() || '';
+					const fileName = filePath.replace(/\.module\.(css|scss|sass|less|styl|stylus)$/, '');
+					// TODO: пока не буду удалять, но на практике пойму нужен ли мне `hash`
+					const hash = Buffer.from(css + filename).toString('base64').slice(0, 5).replace(/[+/=]/g, '');
+					return `${fileName}__${name}___${hash}`;
+				}
+			}
+		},
 		plugins: [react()],
 		resolve: {
 			alias: {
