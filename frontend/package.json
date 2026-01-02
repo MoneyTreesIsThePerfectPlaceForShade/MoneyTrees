@@ -1,6 +1,6 @@
 {
-  "name": "bonuslevel",
-  "version": "0.0.7",
+  "name": "moneytrees",
+  "version": "0.0.8",
   "description": "",
   "repository": {
     "type": "git",
@@ -28,9 +28,11 @@
     "test:coverage": "npm run test -- --coverage"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "2.11.2",
     "classnames": "2.5.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-redux": "9.2.0",
     "react-router": "7.11.0"
   },
   "devDependencies": {
@@ -39,7 +41,7 @@
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
-    "@testing-library/user-event": "^14.6.1",
+    "@testing-library/user-event": "14.6.1",
     "@types/jest": "30.0.0",
     "@types/node": "24.0.13",
     "@types/react": "19.1.8",

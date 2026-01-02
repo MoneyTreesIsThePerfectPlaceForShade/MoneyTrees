@@ -1,9 +1,15 @@
+import {decrement, increment} from './counterSlice';
 import styles from './Custom.module.css';
 import cn from 'classnames';
+import {useDispatch, useSelector} from 'react-redux';
 import {useTheme} from 'shared/hooks/useTheme';
 
 export const Custom = () => {
 	const {theme} = useTheme();
+
+	// TODO: типизация
+	const count = useSelector(state => state.counter.value);
+	const dispatch = useDispatch();
 
 	const compStyles = cn({
 		[styles.container]: true,
@@ -13,7 +19,19 @@ export const Custom = () => {
 
 	return (
 		<div className={compStyles}>
-			Some Content
+			{count}
+			<button
+				onClick={() => dispatch(increment())}
+				style={{height: '5rem', margin: '5rem', width: '5rem'}}
+			>
+				+
+			</button>
+			<button
+				onClick={() => dispatch(decrement())}
+				style={{height: '5rem', margin: '5rem', width: '5rem'}}
+			>
+				-
+			</button>
 		</div>
 	);
 };
