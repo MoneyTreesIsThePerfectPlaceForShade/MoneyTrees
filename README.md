@@ -5,3 +5,7 @@
 - Redux Toolkit
 - Vite
 - PostCSS
+## Backend
+### Технологии
+- Python
+- FastAPI
