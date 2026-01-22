@@ -1,10 +1,13 @@
 import './App.module.css';
+import {getGreetingsText} from './helpers';
 import {Custom} from 'components/Custom/Custom';
 import {ToggleTheme} from 'components/ToggleTheme/ToggleTheme';
+import {useEffect, useState} from 'react';
 import {useTheme} from 'shared/hooks/useTheme';
 
 export const App = () => {
 	const {theme} = useTheme();
+	const [message, setMessage] = useState('');
 	const root = document.querySelector<HTMLElement>(':root');
 
 	/**
@@ -17,6 +20,10 @@ export const App = () => {
 		;
 	}
 
+	useEffect(() => {
+		setMessage(getGreetingsText());
+	}, []);
+
 	return (
 		<div data-testid="app">
 			<div style={{
@@ -25,6 +32,7 @@ export const App = () => {
 			>
 				<ToggleTheme />
 			</div>
+			<div>{message}</div>
 			<Custom />
 		</div >
 	);
