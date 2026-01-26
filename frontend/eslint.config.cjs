@@ -12,6 +12,7 @@ module.exports = [
 			parser
 		},
 		rules: {
+			'@nsmp/rules/no-fetch-xhr': 'off',
 			'react/display-name': 'off'
 		}
 	},

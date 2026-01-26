@@ -1,5 +1,5 @@
 import './App.module.css';
-import {getGreetingsText} from './helpers';
+import {getHeroes} from './helpers';
 import {Custom} from 'components/Custom/Custom';
 import {ToggleTheme} from 'components/ToggleTheme/ToggleTheme';
 import {useEffect, useState} from 'react';
@@ -7,7 +7,9 @@ import {useTheme} from 'shared/hooks/useTheme';
 
 export const App = () => {
 	const {theme} = useTheme();
-	const [message, setMessage] = useState('');
+	const [searchHeroe, setSearchHeroe] = useState('');
+	const [heroes, setHeroes] = useState<{id: number, name: string}[]>([]);
+
 	const root = document.querySelector<HTMLElement>(':root');
 
 	/**
@@ -21,8 +23,24 @@ export const App = () => {
 	}
 
 	useEffect(() => {
-		setMessage(getGreetingsText());
-	}, []);
+		if (searchHeroe) {
+			const fetchHeroes = async () => {
+				const data = await getHeroes(searchHeroe);
+
+				setHeroes(data);
+			};
+
+			fetchHeroes();
+		}
+	}, [searchHeroe]);
+
+	const renderHeroes = () => {
+		if (heroes.length) {
+			return heroes.map(heroe => <div key={heroe.id}>{heroe.name}</div>);
+		}
+
+		return null;
+	};
 
 	return (
 		<div data-testid="app">
@@ -32,8 +50,9 @@ export const App = () => {
 			>
 				<ToggleTheme />
 			</div>
-			<div>{message}</div>
 			<Custom />
+			<input onChange={e => setSearchHeroe(e.target.value)} type="text" />
+			{renderHeroes()}
 		</div >
 	);
 };
