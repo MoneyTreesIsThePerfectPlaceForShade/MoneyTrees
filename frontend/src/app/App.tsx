@@ -22,20 +22,62 @@ export const App = () => {
 		;
 	}
 
+	/**
+	 * Async/Await
+	 */
+	// useEffect(() => {
+	// 	if (!searchHeroe) {
+	// 		return;
+	// 	}
+
+	// 	const controller = new AbortController();
+	// 	const signal = controller.signal;
+
+	// 	const fetchHeroes = async () => {
+	// 		try {
+	// 			const data = await getHeroes(searchHeroe, signal);
+
+	// 			setHeroes(data);
+	// 		} catch (e) {
+	// 			console.log('Отменился запрос', e);
+	// 		}
+	// 	};
+
+	// 	fetchHeroes();
+
+	// 	return () => {
+	// 		controller.abort();
+	// 	};
+	// }, [searchHeroe]);
+
+	/**
+	 * Promises
+	*/
 	useEffect(() => {
-		if (searchHeroe) {
-			const fetchHeroes = async () => {
-				const data = await getHeroes(searchHeroe);
-
-				setHeroes(data);
-			};
-
-			fetchHeroes();
+		if (!searchHeroe) {
+			return;
 		}
+
+		const controller = new AbortController();
+		const signal = controller.signal;
+
+		getHeroes(searchHeroe, signal)
+			.then(data => {
+				setHeroes(data);
+
+				return undefined;
+			})
+			.catch(() => {
+				// error handling
+			});
+
+		return () => {
+			controller.abort();
+		};
 	}, [searchHeroe]);
 
 	const renderHeroes = () => {
-		if (heroes.length) {
+		if (heroes?.length) {
 			return heroes.map(heroe => <div key={heroe.id}>{heroe.name}</div>);
 		}
 
