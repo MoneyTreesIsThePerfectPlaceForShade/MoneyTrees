@@ -2,8 +2,9 @@ import './App.module.css';
 import {getHeroes} from './helpers';
 import {Custom} from 'components/Custom/Custom';
 import {ToggleTheme} from 'components/ToggleTheme/ToggleTheme';
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {useTheme} from 'shared/hooks/useTheme';
+import {debounce} from 'shared/utils/debounce';
 
 export const App = () => {
 	const {theme} = useTheme();
@@ -22,37 +23,16 @@ export const App = () => {
 		;
 	}
 
-	/**
-	 * Async/Await
-	 */
-	// useEffect(() => {
-	// 	if (!searchHeroe) {
-	// 		return;
-	// 	}
+	const fetchHeroes = useCallback(debounce(async (query: string, signal: AbortSignal) => {
+		try {
+			const data = await getHeroes(query, signal);
 
-	// 	const controller = new AbortController();
-	// 	const signal = controller.signal;
+			setHeroes(data);
+		} catch (e) {
+			console.log('Отменился запрос', e);
+		}
+	}, 500), []);
 
-	// 	const fetchHeroes = async () => {
-	// 		try {
-	// 			const data = await getHeroes(searchHeroe, signal);
-
-	// 			setHeroes(data);
-	// 		} catch (e) {
-	// 			console.log('Отменился запрос', e);
-	// 		}
-	// 	};
-
-	// 	fetchHeroes();
-
-	// 	return () => {
-	// 		controller.abort();
-	// 	};
-	// }, [searchHeroe]);
-
-	/**
-	 * Promises
-	*/
 	useEffect(() => {
 		if (!searchHeroe) {
 			return;
@@ -61,20 +41,38 @@ export const App = () => {
 		const controller = new AbortController();
 		const signal = controller.signal;
 
-		getHeroes(searchHeroe, signal)
-			.then(data => {
-				setHeroes(data);
-
-				return undefined;
-			})
-			.catch(() => {
-				// error handling
-			});
+		fetchHeroes(searchHeroe, signal);
 
 		return () => {
 			controller.abort();
 		};
-	}, [searchHeroe]);
+	}, [searchHeroe, fetchHeroes]);
+
+	/**
+	 * Promises
+	*/
+	// useEffect(() => {
+	// 	if (!searchHeroe) {
+	// 		return;
+	// 	}
+
+	// 	const controller = new AbortController();
+	// 	const signal = controller.signal;
+
+	// 	getHeroes(searchHeroe, signal)
+	// 		.then(data => {
+	// 			setHeroes(data);
+
+	// 			return undefined;
+	// 		})
+	// 		.catch(() => {
+	// 			// error handling
+	// 		});
+
+	// 	return () => {
+	// 		controller.abort();
+	// 	};
+	// }, [searchHeroe]);
 
 	const renderHeroes = () => {
 		if (heroes?.length) {
