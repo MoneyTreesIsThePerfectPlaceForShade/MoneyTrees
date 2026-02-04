@@ -11,6 +11,12 @@ module.exports = [
 		languageOptions: {
 			parser
 		},
+		global: {
+			/**
+			 * Workaround for "NodeJS is not defined"
+			 */
+			NodeJS: true
+		},
 		rules: {
 			'@nsmp/rules/no-fetch-xhr': 'off',
 			'react/display-name': 'off'

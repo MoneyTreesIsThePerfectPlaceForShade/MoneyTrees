@@ -31,7 +31,7 @@ export const App = () => {
 		} catch (e) {
 			console.log('Отменился запрос', e);
 		}
-	}, 500), []);
+	}), []);
 
 	useEffect(() => {
 		if (!searchHeroe) {
