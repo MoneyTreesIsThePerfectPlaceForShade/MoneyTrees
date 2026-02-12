@@ -8,7 +8,7 @@ import {RouterProvider} from 'react-router/dom';
 createRoot(document.getElementById('root')!).render(
 	<Provider store={store}>
 		<ThemeProvider>
-			<RouterProvider router={router} />,
+			<RouterProvider router={router} />
 		</ThemeProvider>
 	</Provider>
 );
