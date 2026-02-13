@@ -1,62 +1,45 @@
 import './App.module.css';
-// import {getHeroes} from './helpers';
-// import {Custom} from 'components/Custom/Custom';
+import {getHeroes} from './helpers';
 import {PageLayout} from 'components/PageLayout/PageLayout';
-// import {ToggleTheme} from 'components/ToggleTheme/ToggleTheme';
-// import {useCallback, useEffect, useState} from 'react';
-import {useTheme} from 'shared/hooks/useTheme';
-// import {debounce} from 'shared/utils/debounce';
+import {useCallback, useEffect, useState} from 'react';
+import {debounce} from 'shared/utils/debounce';
 
 export const App = () => {
-	const {theme} = useTheme();
-	// const [searchHeroe, setSearchHeroe] = useState('');
-	// const [heroes, setHeroes] = useState<{id: number, name: string}[]>([]);
+	const [searchHeroe, setSearchHeroe] = useState('');
+	const [heroes, setHeroes] = useState<{id: number, name: string}[]>([]);
 
-	// const root = document.querySelector<HTMLElement>(':root');
+	const fetchHeroes = useCallback(debounce(async (query: string, signal: AbortSignal) => {
+		try {
+			const data = await getHeroes(query, signal);
 
-	// /**
-	//  * См. colors.css
-	//  * TODO: вероятно это стоит вынести в useEffect
-	//  */
-	// if (root?.style) {
-	// 	theme === 'light'
-	// 		? root.style.setProperty('--background-color', '#F5F5F5')
-	// 		: root.style.setProperty('--background-color', '#0a1928');
-	// 	;
-	// }
+			setHeroes(data);
+		} catch (e) {
+			console.log('Отменился запрос', e);
+		}
+	}), []);
 
-	// const fetchHeroes = useCallback(debounce(async (query: string, signal: AbortSignal) => {
-	// 	try {
-	// 		const data = await getHeroes(query, signal);
+	useEffect(() => {
+		if (!searchHeroe) {
+			return;
+		}
 
-	// 		setHeroes(data);
-	// 	} catch (e) {
-	// 		console.log('Отменился запрос', e);
-	// 	}
-	// }), []);
+		const controller = new AbortController();
+		const signal = controller.signal;
 
-	// useEffect(() => {
-	// 	if (!searchHeroe) {
-	// 		return;
-	// 	}
+		fetchHeroes(searchHeroe, signal);
 
-	// 	const controller = new AbortController();
-	// 	const signal = controller.signal;
+		return () => {
+			controller.abort();
+		};
+	}, [searchHeroe, fetchHeroes]);
 
-	// 	fetchHeroes(searchHeroe, signal);
+	const renderHeroes = () => {
+		if (heroes?.length) {
+			return heroes.map(heroe => <div key={heroe.id}>{heroe.name}</div>);
+		}
 
-	// 	return () => {
-	// 		controller.abort();
-	// 	};
-	// }, [searchHeroe, fetchHeroes]);
-
-	// const renderHeroes = () => {
-	// 	if (heroes?.length) {
-	// 		return heroes.map(heroe => <div key={heroe.id}>{heroe.name}</div>);
-	// 	}
-
-	// 	return null;
-	// };
+		return null;
+	};
 
 	return (
 		<PageLayout>
@@ -65,9 +48,8 @@ export const App = () => {
 					margin: '5rem'
 				}}
 				>
-					{/* <Custom /> */}
-					{/* <input onChange={e => setSearchHeroe(e.target.value)} type="text" /> */}
-					{/* {renderHeroes()} */}
+					<input onChange={e => setSearchHeroe(e.target.value)} type="text" />
+					{renderHeroes()}
 				</div>
 			</div >
 		</PageLayout>

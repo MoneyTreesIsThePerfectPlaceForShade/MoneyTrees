@@ -12,3 +12,7 @@
 ### Технологии
 - Python
 - FastAPI
+
+<!-- TODO: deepwiki -->
+<!-- TODO: open-websearch -->
+<!-- TODO: claude hooks postTool -->
