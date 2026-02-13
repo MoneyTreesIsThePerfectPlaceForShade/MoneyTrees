@@ -1,3 +1,4 @@
+import { AppState } from 'app/store';
 import {decrement, increment} from './counterSlice';
 import styles from './Custom.module.css';
 import cn from 'classnames';
@@ -7,8 +8,7 @@ import {useTheme} from 'shared/hooks/useTheme';
 export const Custom = () => {
 	const {theme} = useTheme();
 
-	// TODO: типизация
-	const count = useSelector(state => state.counter.value);
+	const count = useSelector<AppState>(state => state.counter.value);
 	const dispatch = useDispatch();
 
 	const compStyles = cn({
