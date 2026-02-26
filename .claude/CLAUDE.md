@@ -109,6 +109,8 @@ When adding new path aliases, update BOTH files.
 - npm >= 10.9.0
 
 # Best practices
+## Базовые
+**ВАЖНО**: никогда не делай коммиты!
 ## Frontend
 ### TypeScript
 Никогда не используй `any` в типизации.

@@ -44,13 +44,8 @@ export const App = () => {
 	return (
 		<PageLayout>
 			<div data-testid="app">
-				<div style={{
-					margin: '5rem'
-				}}
-				>
-					<input onChange={e => setSearchHeroe(e.target.value)} type="text" />
-					{renderHeroes()}
-				</div>
+				<input onChange={e => setSearchHeroe(e.target.value)} type="text" />
+				{renderHeroes()}
 			</div >
 		</PageLayout>
 	);

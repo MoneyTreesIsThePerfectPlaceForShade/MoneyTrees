@@ -1,0 +1,37 @@
+@property --app-background-right {
+  inherits: true;
+  initial-value: #a2bdc8;
+  syntax: "<color>";
+}
+
+@property --app-background-left {
+  inherits: true;
+  initial-value: #314158;
+  syntax: "<color>";
+}
+
+.container {
+  background: 
+    repeating-radial-gradient(circle at 0 0, rgb(255,255,255,5%) 0, transparent 2px),
+    radial-gradient(circle at 20% 30%, rgb(255,255,240,15%) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgb(255,255,240,10%) 0%, transparent 40%),
+    linear-gradient(to left bottom, var(--app-background-right), var(--app-background-left)),
+    linear-gradient(to left bottom, var(--app-background-right), var(--app-background-left)),
+    linear-gradient(to right, rgb(255,255,240,10%) 0%, transparent 40%);
+  background-blend-mode: overlay;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 15rem;
+  transition:
+    --app-background-left var(--standart-animation-duration),
+    --app-background-right var(--standart-animation-duration);
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

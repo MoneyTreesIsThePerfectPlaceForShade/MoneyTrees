@@ -1,6 +1,10 @@
+import {PageLayout} from 'components/PageLayout/PageLayout';
+
 export const Error = () => {
 	console.log('error');
 	return (
-		<div>Error</div>
+		<PageLayout>
+			<div>Error</div>
+		</PageLayout>
 	);
 };

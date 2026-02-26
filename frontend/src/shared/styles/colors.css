@@ -1,9 +1,12 @@
 :root {
   /* Цвет фона приложения */
-  --app-background-light: #F5F5F5;
+  --app-background-light-left: #a2bdc8;
+  --app-background-light-right: #314158;
   --app-background-dark: #0a1928;
 
   /* Цвет основого текста */
-  --app-color-light: #0a1928;
-  --app-color-dark: #F5F5F5;
+
+  /* --app-color-light: #0a1928; */
+
+  /* --app-color-dark: #F5F5F5; */
 }
