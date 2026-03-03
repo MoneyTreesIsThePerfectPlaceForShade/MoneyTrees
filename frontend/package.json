@@ -1,17 +1,17 @@
 {
   "name": "moneytrees",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MoneyTreesIsThePerfectPlaceForShade/BonusLevel.git"
+    "url": "git+https://github.com/MoneyTreesIsThePerfectPlaceForShade/MoneyTrees.git"
   },
   "author": "Матвей Скоморохов",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MoneyTreesIsThePerfectPlaceForShade/BonusLevel/issues"
+    "url": "https://github.com/MoneyTreesIsThePerfectPlaceForShade/MoneyTrees/issues"
   },
-  "homepage": "https://github.com/MoneyTreesIsThePerfectPlaceForShade/BonusLevel#readme",
+  "homepage": "https://github.com/MoneyTreesIsThePerfectPlaceForShade/MoneyTrees#readme",
   "engines": {
     "node": ">=22.11.0",
     "npm": ">=10.9.0"
@@ -24,8 +24,10 @@
     "lint": "npx eslint .",
     "stylelint": "stylelint '**/*.css'",
     "test": "jest --maxWorkers=4 --logHeapUsage",
-    "test:watch": "npm run test -- --watch",
-    "test:coverage": "npm run test -- --coverage"
+    "test-watch": "npm run test -- --watch",
+    "test-coverage": "npm run test -- --coverage",
+    "e2e": "npx playwright test",
+    "e2e-ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@reduxjs/toolkit": "2.11.2",
