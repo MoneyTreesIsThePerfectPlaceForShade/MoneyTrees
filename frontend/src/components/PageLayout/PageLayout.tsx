@@ -2,7 +2,7 @@ import styles from './PageLayout.module.css';
 import {Props} from './types';
 import {PageLayoutFooter} from 'components/PageLayout/PageLayoutFooter';
 import {PageLayoutHeader} from 'components/PageLayout/PageLayoutHeader';
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import {useTheme} from 'shared/hooks/useTheme';
 
 /**
@@ -10,24 +10,37 @@ import {useTheme} from 'shared/hooks/useTheme';
  */
 export const PageLayout = ({children}: Props) => {
 	const {theme} = useTheme();
-
 	const root = document.querySelector<HTMLElement>(':root');
 
+	let bgRightLight: string;
+	let bgLeftLight: string;
+	let bgRightDark: string;
+	let bgLeftDark: string;
+	const refEl = useRef<HTMLElement>(null);
+
+	/**
+	 * Не очень элегантно, зато переиспользуем цвета из `colors.css` и менять
+	 */
+	if (refEl.current) {
+		const style = window.getComputedStyle(refEl.current);
+
+		bgRightLight = style.getPropertyValue('--app-background-right-light');
+		bgLeftLight = style.getPropertyValue('--app-background-left-light');
+		bgRightDark = style.getPropertyValue('--app-background-right-dark');
+		bgLeftDark = style.getPropertyValue('--app-background-left-dark');
+	}
+
 	const setLightThemeColor = (root: HTMLElement | null) => {
-		root?.style.setProperty('--app-background-right', '#a2bdc8');
-		root?.style.setProperty('--app-background-left', '#314158');
+		root?.style.setProperty('--app-background-right', bgRightLight);
+		root?.style.setProperty('--app-background-left', bgLeftLight);
 	};
 
 	const setDarkThemeColor = (root: HTMLElement | null) => {
-		root?.style.setProperty('--app-background-right', '#314158');
-		root?.style.setProperty('--app-background-left', '#a2bdc8');
+		root?.style.setProperty('--app-background-right', bgRightDark);
+		root?.style.setProperty('--app-background-left', bgLeftDark);
 	};
 
 	useEffect(() => {
-		/**
-		 * См. colors.css
-		 */
-		// TODO: сделать градиент
 		if (root?.style) {
 			theme === 'light'
 				? setLightThemeColor(root)
@@ -37,7 +50,7 @@ export const PageLayout = ({children}: Props) => {
 	}, [theme, root]);
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} ref={refEl}>
 			<PageLayoutHeader />
 			<main className={styles.content}>{children}</main>
 			<PageLayoutFooter />

@@ -1,3 +1,5 @@
+@import url('../../shared/styles/colors.css');
+
 @property --app-background-right {
   inherits: true;
   initial-value: #a2bdc8;
@@ -26,8 +28,8 @@
   overflow: hidden;
   padding: 15rem;
   transition:
-    --app-background-left var(--standart-animation-duration),
-    --app-background-right var(--standart-animation-duration);
+    --app-background-right var(--standart-animation-duration),
+    --app-background-left var(--standart-animation-duration);
 }
 
 .content {
