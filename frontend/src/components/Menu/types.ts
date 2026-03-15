@@ -1,3 +1,5 @@
+import {Tile} from 'components/MenuTile/types';
+
 export type Props = {
-	menuTiles: Array<{order: number, title: string, page: string}>
+	menuTiles: Array<Tile>
 };

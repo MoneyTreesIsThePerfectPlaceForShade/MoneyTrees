@@ -1,4 +1,4 @@
-import {App} from './App';
+import {App} from '../pages/Home/Home';
 import {Error} from 'pages/Error/Error';
 import {Music} from 'pages/Music/Music';
 import {createBrowserRouter} from 'react-router';

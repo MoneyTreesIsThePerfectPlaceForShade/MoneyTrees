@@ -1,13 +1,12 @@
 import styles from './ToggleTheme.module.css';
 import cn from 'classnames';
 import {useRef, useState} from 'react';
+import {Icon} from 'shared/components/Icon/Icon';
 import {useTheme} from 'shared/hooks/useTheme';
-import {Icon} from 'shared/icons/Icon';
 import {darkModeIcon, lightModeIcon} from 'shared/icons/icons';
 
 export const ToggleTheme = () => {
 	const {theme, toggleTheme} = useTheme();
-	// TODO: поменять иконки
 	const [icon, setIcon] = useState(theme === 'light'
 		? <Icon color="currentColor" height="3rem" icon={lightModeIcon} width="3rem" />
 		: <Icon color="currentColor" height="3rem" icon={darkModeIcon} width="3rem" />);

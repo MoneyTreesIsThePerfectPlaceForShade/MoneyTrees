@@ -1,8 +1,12 @@
 import styles from './Menu.module.css';
-import {MenuTile} from './MenuTile';
 import {Props} from './types';
 import cn from 'classnames';
+import {MenuTile} from 'components/MenuTile/MenuTile';
 
+/**
+ * Компонент для отображения верхнего меню.
+ * TODO: сделать адаптив.
+ */
 export const Menu = ({menuTiles}: Props) => {
 	const containerStyles = cn({
 		[styles.container]: true

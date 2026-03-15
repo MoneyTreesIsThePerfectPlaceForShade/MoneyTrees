@@ -43,4 +43,6 @@
 
 .content {
   @mixin flexCenter;
+
+  margin: 10rem 0;
 }

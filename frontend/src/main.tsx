@@ -1,3 +1,4 @@
+import './main.module.css';
 import {router} from 'app/routes';
 import {store} from 'app/store';
 import {ThemeProvider} from 'providers/ThemeProvider';

@@ -5,10 +5,7 @@ import {ToggleTheme} from 'components/ToggleTheme/ToggleTheme';
 export const PageLayoutHeader = () => {
 	const menuTiles = [
 		{order: 1, page: '/music', title: 'Музыка'},
-		{order: 0, page: '/', title: 'Дом'},
-		{order: 4, title: 'Обо мне 4'},
-		{order: 3, title: 'Бла-бла 3'},
-		{order: 2, title: 'Что-то ещё 2'}
+		{order: 0, page: '/', title: 'Дом'}
 	].sort((firstTile, secondTile) => firstTile.order - secondTile.order);
 
 	return (
