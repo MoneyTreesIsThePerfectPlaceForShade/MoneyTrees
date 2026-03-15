@@ -24,9 +24,8 @@
   background-blend-mode: overlay;
   display: flex;
   flex-direction: column;
-  height: 100dvh;
   justify-content: space-between;
-  overflow: hidden;
+  min-height: 100dvh;
   padding: 10rem;
   transition:
     --app-background-right var(--standart-animation-duration),
