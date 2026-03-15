@@ -1,5 +1,6 @@
 @import url('../../shared/styles/variables.css');
 @import url('../../shared/styles/colors.css');
+@import url('../../shared/styles/templates.css');
 
 @define-mixin size {
   height: 5rem;
@@ -33,14 +34,19 @@
 }
 
 .container {
-  background-color: #ffde5f;
   border-radius: 100rem;
-
+  transition: background var(--standart-animation-duration);
+  
   @mixin size;
+}
 
-  &:hover {
-    background-color: #f8cc37;
-  }
+.container_light {
+  background-color: var(--accent-color-light);
+
+}
+
+.container_dark {
+  background-color: var(--accent-color-dark);
 }
 
 .animation {
@@ -55,4 +61,16 @@
   font-size: 3rem;
 
   @mixin size;
+}
+
+.icon {
+  @mixin flexCenter;
+}
+
+.iconLight {
+  color: var(--accent-color-dark);
+}
+
+.iconDark {
+  color: var(--accent-color-light);
 }

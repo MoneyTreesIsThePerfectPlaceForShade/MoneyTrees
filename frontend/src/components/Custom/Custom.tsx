@@ -1,6 +1,6 @@
-import { AppState } from 'app/store';
 import {decrement, increment} from './counterSlice';
 import styles from './Custom.module.css';
+import {AppState} from 'app/store';
 import cn from 'classnames';
 import {useDispatch, useSelector} from 'react-redux';
 import {useTheme} from 'shared/hooks/useTheme';

@@ -1,4 +1,18 @@
+@import url('../../shared/styles/templates.css');
+
 .container {
-  margin: 2rem;
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  @mixin flexCenter;
+
+  font-weight: bold;
+}
+
+.themeToggle {
+  @mixin flexCenter;
+
+  justify-content: end;
 }
